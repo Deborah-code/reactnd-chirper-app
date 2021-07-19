@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatTweet, formatDate } from "../utils/helpers";
-import TiArrowBackOutline from "react-icons/ti";
+import { TiArrowBackOutline } from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
 import { TiHeartFullOutline } from "react-icons/ti";
 
 class Tweet extends Component {
+  handleLike = (e) => {
+    e.preventDefault;
+  };
   toParent = (e, id) => {
     e.preventDefault();
     //todo redirect to parent tweet
@@ -44,6 +47,18 @@ class Tweet extends Component {
             </button>
           )}
           <p>{text}</p>
+        </div>
+        <div className="tweet-icons">
+          <TiArrowBackOutline className="tweet-icon" />
+          <span>{replies !== 0 && replies}</span>
+          <button className="heart-button" onClick={this.handleLike}>
+            {hasLiked === true ? (
+              <TiHeartFullOutline color="red" className="tweet-icon" />
+            ) : (
+              <TiHeartOutline className="tweet-icon" />
+            )}
+          </button>
+          <span>{likes !== 0 && likes}</span>
         </div>
       </div>
     );
