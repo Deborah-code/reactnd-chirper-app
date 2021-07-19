@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatTweet } from "../utils/helpers";
+import { formatTweet, formatDate } from "../utils/helpers";
 import TiArrowBackOutline from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
 import { TiHeartFullOutline } from "react-icons/ti";
 
 class Tweet extends Component {
+  toParent = (e, id) => {
+    e.preventDefault();
+    //todo redirect to parent tweet
+  };
   render() {
     const { tweet } = this.props;
 
@@ -28,6 +32,19 @@ class Tweet extends Component {
     return (
       <div className="tweet">
         <img src={avatar} alt={"Avatar of ${name}"} className="avatar" />
+        <div className="tweet-info">
+          <span>{name}</span>
+          <div>{formatDate(timestamp)}</div>
+          {parent && (
+            <button
+              className="replying-to"
+              onClick={(e) => this.toParent(e, parent.id)}
+            >
+              Replying to @{parent.author}{" "}
+            </button>
+          )}
+          <p>{text}</p>
+        </div>
       </div>
     );
   }
