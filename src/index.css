@@ -28,6 +28,7 @@ a {
   width: 250px;
   position: relative;
   border-radius: 15px;
+  color: black;
 }
 
 .btn:hover {
@@ -139,7 +140,7 @@ li {
   color: #697784;
 }
 .tweet-icon:hover {
-  color: #00b5d6;
+  color: #6f1abd;
   cursor: pointer;
 }
 .replying-to {
